@@ -1,8 +1,16 @@
 import './main.styl';
 import $ from 'jquery';
+import jqui from 'jqueryui';
+
+$(document).ready(function() {
+	$(function() {
+		$('.draggable').draggable({
+			containment: 'parent'
+		});
+	});
+});
 
 $('.uploader__btn').change(function() {
-	console.log(this.files);
 	const len = this.files.length;
 
 	for (let i = 0; i < len; i++) {
@@ -18,11 +26,9 @@ function renderImage(file, index) {
 		let theUrl = event.target.result;
 
 		if (0 === index) {
-			$('.main-image').html('<img src="' + theUrl + '" class="img-' + index + '" alt="mainImg" />');
-			console.log('done: '+ index);
+			$('.main-image').html('<img src="' + theUrl + '" class="img-' + index + ' main-image__img" alt="mainImg" />');
 		} else {
-			$('.other-images').append('<img src="' + theUrl + '" alt="otherImg" />');
-			console.log('done: '+ index);
+			$('.other-images').append('<img src="' + theUrl + '" class="img-' + index + ' other-images__img" alt="otherImg" />');
 		}
 	};
 	reader.readAsDataURL(file);
