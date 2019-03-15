@@ -3,9 +3,29 @@ import $ from 'jquery';
 import jqui from 'jqueryui';
 
 $(document).ready(function() {
+	let drag = $('.draggable');
+	const dragW = drag.width();
+	const dragH = drag.height();
+	let drpbl = $('.droppable');
+
 	$(function() {
-		$('.draggable').draggable({
-			containment: 'parent'
+		drag.draggable({
+			containment: 'parent',
+			snap: '.droppable',
+			snapMode: 'inner'
+		});
+
+		drpbl.droppable({
+			drop: function () {
+				drag.text('in Droppable');
+				drag.width(drpbl.width()).height(drpbl.height());
+				//console.log();
+				//drag.offset({ top: drpbl.offsetTop, left: drpbl.offsetLeft });
+			},
+			out: function () {
+				drag.text('Drag me');
+				drag.width(dragW).height(dragH);
+			}
 		});
 	});
 });
