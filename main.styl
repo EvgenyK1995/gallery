@@ -12,8 +12,9 @@
     width 100%
 
 .main-image
-  max-height 400px
+  height 400px
   margin 0 auto
+  max-height 400px
   max-width 400px
 
   &__img
@@ -31,11 +32,19 @@
 
   &__img
     height 150px
-    margin 3px
     object-fit cover
     width 150px
 
+.drag-active
+  transform scale(1.1, 1.1)
+
 .draggable
+  height 150px
+  position relative
+  margin 3px
+  transform scale(1, 1)
+  width 150px
+/*
   align-items center
   background-color #fff
   border 2px solid black
@@ -59,7 +68,7 @@
   position absolute
   right 20px
   top 20px
-  width 100px
+  width 100px*/
 
 .zone
   border 2px dashed #ccc
